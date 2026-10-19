@@ -8,6 +8,6 @@ Links locais: http://localhost:4173/admin/ e http://localhost:4173/agendar/ . Se
 
 Decisão final: manter esta etapa como MVP local, sem publicação; a usuária conectará o GitHub depois. Não houve deploy ou push da atualização. A configuração temporária de ambiente no Sites foi removida e a audiência não foi alterada. O site publicado continua na landing anterior (commit 74b8e613dd4b67e2275f5be4f52f0e37cf9d921d).
 
-GitHub solicitado: https://github.com/andrelopees04-source/babi.git , branch main. Repositório remoto vazio confirmado. O código e a conexão local estão sendo preparados para envio. Bloqueio de envio identificado: Git local sem autenticação; conector GitHub disponível não tem permissão de escrita nesse repositório. Login no GitHub ainda necessário.
+GitHub solicitado: https://github.com/andrelopees04-source/babi.git , branch main. Origin configurado e repositório remoto vazio confirmado. Commit do MVP criado: 96b801b. Gate e 12 testes aprovados. Envio ainda depende de autenticação: Git local inicialmente sem login e conector GitHub sem escrita. Fluxo oficial de login do Git Credential Manager iniciado para a usuária concluir; códigos de autenticação não são persistidos na fonte.
 
 Próxima tarefa: concluir autenticação e push, sem deploy na Vercel. Login do MVP continua de desenvolvimento. Banco e logs ficam fora do Git. A raiz Git do aplicativo é babi-beleza, dentro da pasta de trabalho.
