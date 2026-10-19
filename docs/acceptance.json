@@ -4,7 +4,11 @@
   {"id":"A03","criterion":"Fotografias locais disponíveis","check":"assets"},
   {"id":"A04","criterion":"Links internos com destinos existentes","check":"anchors"},
   {"id":"A05","criterion":"Contato pelo Instagram oficial e links externos seguros","check":"contact"},
-  {"id":"A06","criterion":"JavaScript válido e camadas estáticas respeitadas","check":"syntax"},
+  {"id":"A06","criterion":"JavaScript válido e dependências entre camadas respeitadas","check":"syntax"},
   {"id":"A07","criterion":"Portfólio com filtros, fotos ampliáveis e diálogo acessível","check":"portfolio"},
-  {"id":"A08","criterion":"Serviços, apresentação, processo, FAQ e contato completos","check":"sections"}
+  {"id":"A08","criterion":"Serviços, apresentação, processo, FAQ e contato completos","check":"sections"},
+  {"id":"A09","criterion":"Admin com agenda, gestão e configurações, protegido no servidor","check":"admin"},
+  {"id":"A10","criterion":"Fluxo de cliente com serviço, calendário e comprovante integrado à landing","check":"customer"},
+  {"id":"A11","criterion":"SQLite com slots únicos e dados locais fora do Git","check":"persistence"},
+  {"id":"A12","criterion":"Testes de reserva, concorrência, autorização, cancelamento e reagendamento","check":"runtime"}
 ]

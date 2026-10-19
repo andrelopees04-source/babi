@@ -20,3 +20,14 @@ Prévia servida em HTTP local, status 200. Inspeção pelo navegador CUA.
 | Gate estático | `node scripts/gate.mjs`: 8/8; `node scripts/check-layers.mjs`: fixtures e fonte aprovadas |
 
 Não foi realizado agendamento ou envio de mensagem. Não houve teste em aparelho físico; mobile foi verificado em viewport de iframe. Não se realizou auditoria formal de acessibilidade. O iframe temporário de QA foi removido antes do empacotamento.
+
+## MVP de agendamento — 2026-10-18
+
+- Node local 4173: login de desenvolvimento, admin vazio e agenda pausada verificados. Nenhum dado de QA no banco real.
+- Banco de QA separado na porta 4174: cliente escolheu Cortes & cachos, 19/10 às 09:00, preencheu nome e contato de teste e recebeu confirmação automática com código e link.
+- A mesma reserva apareceu no painel da administração na data correta. Reagendamento para 11:00 persistiu; cancelamento mudou o status e liberou o intervalo.
+- Formulário de configurações foi salvo pelo navegador e retornou confirmação de sucesso.
+- UI inspecionada em 1280 px e dois iframes de 390 px para admin e cliente. Sem teste em aparelho físico. Iframe de QA removido e servidor 4174 encerrado.
+- 12 testes de comportamento aprovados: permissões e origem, configuração, reserva e privacidade, idempotência, cancelamento/revisão, duração histórica no reagendamento, bloqueios, datas/antecedência, duas reservas concorrentes, persistência em arquivo reaberto, conclusão e bloqueio concorrente à reserva.
+- Gate ampliado de 8 para 12 critérios para acompanhar o escopo. Sintaxe, camadas e referências aprovadas.
+- Prévia final do admin salva em ../babi-admin-preview.png. Nova funcionalidade não publicada por decisão final da usuária.

@@ -1,17 +1,37 @@
 # Arquitetura
 
-Site estático e responsivo, sem gerenciador de pacotes ou etapa de build. A stack foi definida pelo fluxo Sites para uma landing page de apresentação. Não há requisito de servidor que justifique um framework.
+MVP local em Node 24+ sem dependências externas. HTML, CSS e módulos JavaScript no navegador; node:sqlite para persistência no servidor. A landing foi preservada e ligada ao agendamento.
 
-| Arquivo | Camada | Dependências | Responsabilidade |
-| --- | --- | --- | --- |
-| `dist/assets/*` | Base | Nenhuma | Fotografias e favicon |
-| `dist/index.html` | Apresentação | CSS, JS e assets | Conteúdo, links, semântica |
-| `dist/styles.css` | Apresentação | Poppins do Google Fonts | Layout e animações |
-| `dist/app.js` | Interações | DOM nativo e assets | Menu, especialidades, filtro, ampliação |
-| `scripts/*` | Ferramentas locais | Node nativo | Gate e relatório |
+| Módulo | Pode depender de | Responsabilidade |
+| --- | --- | --- |
+| dist/assets | Nenhum módulo | Fotografias e favicon |
+| dist/app.js | DOM | Interações da landing |
+| dist/booking/shared.js | DOM e fetch | Formatação, cliente da API e feedback |
+| dist/admin/admin.js | shared.js | Agenda, detalhes, configurações e bloqueios |
+| dist/agendar/booking.js | shared.js | Serviço, calendário, dados e comprovante |
+| server/core.mjs | APIs JavaScript padrão | Validação, disponibilidade, reserva e gestão |
+| server/local.mjs | Node nativo e core.mjs | HTTP, sessão de desenvolvimento e SQLite |
+| migrations/0001-bookings.sql | SQLite | Schema inicial aplicado no startup |
+| scripts e tests | Node nativo e core | Gate e testes |
 
-Não são permitidos imports, require, código de servidor ou dependências de ferramenta em `dist/app.js`. A apresentação não depende das ferramentas locais. Verificador: `node scripts/check-layers.mjs`; exercita uma fixture permitida e uma violação. Limite: verificação lexical, adequada ao arquivo atual sem módulos; novos módulos exigem evoluir o verificador.
+O servidor não importa a UI. A UI não importa Node ou o banco. check-layers.mjs valida imports e exercita fixtures permitidas e proibidas; a validação é lexical.
 
-Contratos de ações: `menu.toggle` recebe clique no botão e atualiza expanded e visibilidade; `services.select` recebe um details aberto, fecha os demais e troca a foto; `portfolio.filter` recebe uma categoria dos botões e atualiza cards e status anunciado; `portfolio.open` recebe um card e abre dialog nativo com foto e link de origem; `portfolio.close` é acionado pelo botão, backdrop ou Escape e devolve o foco pelo comportamento nativo. Sem persistência ou permissões adicionais. Os links de contato abrem o perfil e o visitante inicia a conversa.
+## API e ações
 
-Publicação: `.openai/hosting.json`, diretório `dist`, Site privado por padrão. Poppins depende da conectividade com Google Fonts; há fallback sans-serif. Fotografias estão hospedadas junto do Site e não dependem das URLs temporárias do Instagram.
+Públicas: GET /api/config, GET /api/availability, POST /api/bookings e GET /api/receipt/:token. O comprovante usa token aleatório de 192 bits e não retorna telefone ou observações. Não existe listagem pública de clientes.
+
+Admin: GET/PUT /api/admin/settings, GET /api/admin/bookings, PATCH /api/admin/bookings/:id, GET /api/admin/availability e GET/POST/DELETE /api/admin/blocks. Exigem sessão gerada pelo adaptador local. POST /api/local-login e POST /api/local-logout são acessos de desenvolvimento. Cookies são isolados por porta, HttpOnly e SameSite=Strict. Cabeçalhos externos de identidade não concedem acesso.
+
+Mutações exigem origem igual à aplicação e JSON; parâmetros e tamanho são validados no servidor. O servidor só escuta loopback e rejeita Host diferente de localhost ou 127.0.0.1. Estes controles não transformam o acesso local em autenticação de produção.
+
+## Consistência
+
+Reservas são confirmadas imediatamente. Cada intervalo de 15 minutos tem chave única (data, minuto); todos os slots e a reserva são salvos em transação. Inícios aparecem em passos de 30 minutos. Duração e nome do serviço são gravados para preservar histórico após mudanças nos serviços.
+
+Idempotência evita duplicação no reenvio. Revisões e chave de operação protegem mudanças administrativas concorrentes. Cancelar libera slots; concluir preserva histórico e ocupação. Bloqueios conflitantes com atendimento são rejeitados. Verificação dentro da transação protege contra bloqueios ou configurações alteradas depois da consulta de disponibilidade.
+
+Configuração inicial: agenda pausada, durações e semana sugeridas, sem reserva real. Fuso America/Bahia, comparação UTC-03:00 para Salvador. Antecedência e horizonte configuráveis.
+
+## Execução e limites
+
+npm start mantém API e arquivos em localhost:4173. Dados em data/appointments.sqlite, ignorados pelo Git. PORT e BABI_DB_PATH permitem QA separado. Não há backend em nuvem nesta etapa e não deve haver publicação sem novo pedido. Os dados locais não são sincronizados com a landing anteriormente publicada.

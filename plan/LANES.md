@@ -2,6 +2,6 @@
 
 | Responsável | Frente | Arquivos exclusivos | Data | Status |
 | --- | --- | --- | --- | --- |
-| Codex principal | Landing page, documentação e QA | Todo o diretório babi-beleza | 2026-10-18 | Implementação e QA concluídos; publicação em finalização |
+| Codex principal | Conexão ao GitHub e revisão dos arquivos enviados | Todo o diretório babi-beleza | 2026-10-18 | Em andamento |
 
 Frente única. Não houve delegação.
