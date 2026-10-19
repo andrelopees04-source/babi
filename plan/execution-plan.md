@@ -23,6 +23,6 @@ Decisão da usuária: MVP local, sem deploy. A agenda inicia pausada até revis�
 - [x] Revisar arquivos e exclusão de banco, logs e credenciais.
 - [x] Executar gate: 12 critérios e 12 testes aprovados.
 - [x] Configurar origin e criar commit local do MVP.
-- [ ] Concluir envio à branch main depois da autenticação GitHub.
+- [x] Concluir envio à branch main depois da autenticação GitHub; HEAD remoto e local conferidos.
 
 Vercel: não configurar nem publicar.

@@ -11,6 +11,6 @@ Atualizado: 2026-10-18. Estágio: landing e MVP local de agendamentos concluído
 | MVP admin e cliente | Concluído localmente | dist/admin, dist/agendar, server, migrations |
 | Confirmação automática e persistência | Verificado | 12 testes e fluxo de QA no navegador |
 | Publicação do MVP | Fora do escopo atual | Usuária pediu manter local e conectar GitHub depois |
-| Conexão ao GitHub | Em finalização | Repositório andrelopees04-source/babi vazio; envio depende de autenticação |
+| Conexão ao GitHub | Concluída | Código enviado a andrelopees04-source/babi, main com upstream origin/main |
 
-Aceitação do gate atual: 12/12. O site online ainda é a landing anterior, sem o novo backend. Próxima tarefa: finalizar envio ao GitHub. Deploy na Vercel expressamente fora do escopo.
+Aceitação do gate atual: 12/12. GitHub sincronizado. O site online ainda é a landing anterior, sem o novo backend. Deploy na Vercel expressamente fora do escopo.

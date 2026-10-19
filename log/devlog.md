@@ -33,3 +33,5 @@
 - Gate executado novamente: 12/12 critérios e 12 testes aprovados. Banco, logs, arquivos .env e metadados locais excluídos do envio.
 - Acesso disponível inicialmente: conector sem push e Git local sem login. Fonte e commit preparados antes de solicitar a etapa de autenticação.
 - Origin configurado e commit local do MVP criado. Fluxo de login oficial do Git Credential Manager iniciado; envio aguarda a usuária concluir a autenticação. Nenhuma integração com Vercel ou deploy foi configurada.
+- Login concluído pela usuária. Como havia múltiplas contas no computador, selecionada a conta andrelopees04-source na configuração local deste repositório, sem incluir credenciais na URL ou na fonte.
+- Push main concluído; upstream origin/main configurado. HEAD local e remoto comparados e iguais em 03303e9b2fb8ec2c6ad842d804e12fe092d30922. Nenhum deploy. Raia liberada.
