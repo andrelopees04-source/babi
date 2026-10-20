@@ -12,3 +12,5 @@ node_modules/
 *.log
 dist/server/
 dist/.openai/
+*.tar.gz
+*-preview.png

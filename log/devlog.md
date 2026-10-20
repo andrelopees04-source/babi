@@ -35,3 +35,11 @@
 - Origin configurado e commit local do MVP criado. Fluxo de login oficial do Git Credential Manager iniciado; envio aguarda a usuária concluir a autenticação. Nenhuma integração com Vercel ou deploy foi configurada.
 - Login concluído pela usuária. Como havia múltiplas contas no computador, selecionada a conta andrelopees04-source na configuração local deste repositório, sem incluir credenciais na URL ou na fonte.
 - Push main concluído; upstream origin/main configurado. HEAD local e remoto comparados e iguais em 03303e9b2fb8ec2c6ad842d804e12fe092d30922. Nenhum deploy. Raia liberada.
+
+## 2026-10-20 — Unificação da raiz e envio ao GitHub
+- Estrutura unificada diretamente na raiz do projeto (eliminada a pasta aninhada babi-beleza).
+- package.json acessível na raiz; npm run dev e npm test validados diretamente no diretório principal.
+- Configurada tarefa .vscode/tasks.json com runOn: folderOpen para iniciar npm run dev ao abrir o projeto no editor.
+- Atualizado .gitignore para ignorar artefatos de empacotamento (*.tar.gz) e prévias (*-preview.png).
+- Gate 12/12 e 12 testes automatizados verificados com sucesso.
+- Sincronização e push efetuados para https://github.com/andrelopees04-source/babi.git na branch main.
